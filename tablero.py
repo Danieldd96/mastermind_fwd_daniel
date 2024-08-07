@@ -17,7 +17,9 @@ class Tablero:
     def validar(self, intento):
         retroalimentacion = []
         colores_copia = self.__combinacion.copy()
+        
         for i in range(4):
+            
             if intento[i] == colores_copia[i]:
                 retroalimentacion.append("verde")
                 colores_copia[i] = None
@@ -31,11 +33,13 @@ class Tablero:
 
     def mostrar_tablero(self):
         for intento, retroalimentacion in self.__turnos:
+            
             fila = ' '.join([self.COLORES[color] + "O" + attr("reset") for color in intento])
             mostrar_retroalimentacion = ' '.join([fg("green") + "o" + attr("reset") if f == "verde"
             else fg("yellow") + "o" + attr("reset") if f == "amarillo"
             else "o"
             for f in retroalimentacion])
+            
             print(f"{fila} | {mostrar_retroalimentacion}")
             
     def actualizar_tablero(self, intento, retroalimentacion):
